@@ -29,8 +29,8 @@ COPY . .
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/sites-available/default
 
-# Create Laravel storage, logs, and cache directories
-RUN mkdir -p /var/www/html/storage/logs /var/www/html/bootstrap/cache
+# Create Laravel storage, logs, cache, and views directories
+RUN mkdir -p /var/www/html/storage/logs /var/www/html/storage/framework/views /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
@@ -49,7 +49,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Expose port 80 for HTTP
 EXPOSE 80
 
-# Run migrations on Render
+# Run migration on Render
 RUN php artisan migrate --force
 
 # Start Nginx and PHP-FPM
