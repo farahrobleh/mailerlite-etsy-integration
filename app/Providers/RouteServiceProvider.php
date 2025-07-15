@@ -9,14 +9,16 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        file_put_contents(storage_path('logs/routeprovider.txt'), 'RouteServiceProvider loaded', FILE_APPEND);
-        $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
+        // Removed debugging file write
+        // file_put_contents('/var/www/html/storage/logs/routeprovider.txt', 'RouteServiceProvider loaded', FILE_APPEND);
 
+        $this->routes(function () {
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            Route::prefix('api')
+                ->middleware('api')
+                ->group(base_path('routes/api.php'));
         });
     }
 }
