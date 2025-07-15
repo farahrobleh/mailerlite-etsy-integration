@@ -9,7 +9,7 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        file_put_contents(base_path('routeprovider.txt'), 'RouteServiceProvider booted at '.date('c').PHP_EOL, FILE_APPEND);
+        file_put_contents(storage_path('logs/routeprovider.txt'), 'RouteServiceProvider loaded', FILE_APPEND);
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
