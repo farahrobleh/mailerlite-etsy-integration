@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\EtsyController;
@@ -12,15 +11,6 @@ Route::get('/', function () {
 
 Route::get('/api/etsy/auth', [EtsyController::class, 'redirectToEtsy']);
 Route::get('/api/etsy/callback', [EtsyController::class, 'handleEtsyCallback']);
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
