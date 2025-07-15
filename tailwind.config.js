@@ -8,7 +8,10 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'mailerlite-blue': '#00A8E8',
+                'mailerlite-green': '#58BE72',
+                'mailerlite-section': '#D6F2E3',
+                'mailerlite-bg': '#FFFFFF',
+                'mailerlite-text': '#000000',
             },
         },
     },

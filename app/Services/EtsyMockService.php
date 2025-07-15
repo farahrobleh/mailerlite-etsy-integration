@@ -28,8 +28,18 @@ class EtsyMockService
     {
         return [
             'results' => [
-                ['listing_id' => 1, 'title' => 'Handmade Necklace', 'price' => '29.99', 'image_url' => 'https://via.placeholder.com/150'],
-                ['listing_id' => 2, 'title' => 'Vintage Mug', 'price' => '15.00', 'image_url' => 'https://via.placeholder.com/150'],
+                [
+                    'listing_id' => 1,
+                    'title' => 'Handmade Necklace',
+                    'price' => '29.99',
+                    'image_url' => 'https://images.pexels.com/photos/135486/pexels-photo-135486.jpeg?auto=compress&w=150&h=150&fit=crop' // handmade necklace
+                ],
+                [
+                    'listing_id' => 2,
+                    'title' => 'Vintage Mug',
+                    'price' => '15.00',
+                    'image_url' => 'https://images.pexels.com/photos/1724184/pexels-photo-1724184.jpeg?auto=compress&w=150&h=150&fit=crop' // vintage mug
+                ],
             ]
         ];
     }

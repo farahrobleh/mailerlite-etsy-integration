@@ -72,10 +72,10 @@ class SyncController extends Controller
             return response()->json(['error' => 'No shop connected'], 400);
         }
 
-        $products = $this->etsyService->getProducts($shop->etsy_shop_id);
+        $products = $request->input('products', $this->etsyService->getProducts($shop->etsy_shop_id)['results']);
         $campaignData = $this->mailerLiteService->createCampaign(
             $request->input('title', 'Etsy Campaign'),
-            json_encode($products['results'])
+            json_encode($products)
         );
 
         $campaign = Campaign::create([
