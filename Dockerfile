@@ -51,5 +51,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Expose port 80 for HTTP
 EXPOSE 80
 
+# Run migrations on Render
+RUN php artisan migrate --force
+
 # Start Nginx and PHP-FPM
 CMD service nginx start && php-fpm
