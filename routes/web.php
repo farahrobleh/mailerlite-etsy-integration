@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\EtsyController;
 
+Route::get('/', function () {
+    return Inertia::render('EtsyDashboard');
+});
+
 Route::get('/api/etsy/auth', [EtsyController::class, 'redirectToEtsy']);
 Route::get('/api/etsy/callback', [EtsyController::class, 'handleEtsyCallback']);
 
