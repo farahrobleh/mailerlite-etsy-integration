@@ -29,6 +29,9 @@ COPY . .
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/sites-available/default
 
+# Create Laravel storage and cache directories
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
@@ -37,6 +40,7 @@ RUN npm install && npm run build
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Laravel config
 ENV APP_ENV=production
