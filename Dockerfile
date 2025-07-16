@@ -29,7 +29,7 @@ COPY . .
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/sites-available/default
 
-# Create Laravel storage, logs, cache, and views directories
+# Create Laravel storage directories
 RUN mkdir -p /var/www/html/storage/logs /var/www/html/storage/framework/views /var/www/html/storage/framework/sessions /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
@@ -37,8 +37,7 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Clean previous Vite builds and install Node.js dependencies
-RUN rm -rf /var/www/html/public/build
+# Build frontend assets
 RUN npm install && npm run build
 
 # Laravel config
@@ -47,8 +46,8 @@ ENV APP_DEBUG=false
 ENV LOG_CHANNEL=stderr
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Expose ports for HTTP and HTTPS
-EXPOSE 80 443
+# Expose port 80
+EXPOSE 80
 
 # Run migration on Render
 RUN php artisan migrate --force
