@@ -30,14 +30,15 @@ COPY . .
 COPY nginx.conf /etc/nginx/sites-available/default
 
 # Create Laravel storage, logs, cache, and views directories
-RUN mkdir -p /var/www/html/storage/logs /var/www/html/storage/framework/views /var/www/html/bootstrap/cache
+RUN mkdir -p /var/www/html/storage/logs /var/www/html/storage/framework/views /var/www/html/storage/framework/sessions /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Install Node.js dependencies and build assets
+# Clean previous Vite builds and install Node.js dependencies
+RUN rm -rf /var/www/html/public/build
 RUN npm install && npm run build
 
 # Laravel config
