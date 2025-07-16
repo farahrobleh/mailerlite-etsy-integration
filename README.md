@@ -1,3 +1,5 @@
+![MailerLite-Etsy Integration Logo](https://cdn.imgchest.com/files/y8xcnqxq2z4.png)
+
 # MailerLite-Etsy Integration
 
 A simple demo integration to sync Etsy customers to MailerLite subscriber groups, create email campaigns (w/ drag-and-drop product photo functionality), and trigger automations, built with Laravel, Inertia.js, Vue.js, and PostgreSQL as a portfolio piece for the MailerLite Integrations Engineer role.
@@ -19,6 +21,8 @@ A simple demo integration to sync Etsy customers to MailerLite subscriber groups
 
 ## Demo
 [Live Demo](https://mailerlite-etsy-integration.onrender.com/)
+
+
 [Brief Documentation/Statement of Purpose](https://www.notion.so/MailerLite-Etsy-Integration-Documentation-and-Statement-of-Purpose-23205210a3bd80b393b7da7904a874ad?source=copy_link)
 
 ## Notes
