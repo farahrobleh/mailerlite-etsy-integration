@@ -47,8 +47,8 @@ ENV APP_DEBUG=false
 ENV LOG_CHANNEL=stderr
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Expose port 80 for HTTP
-EXPOSE 80
+# Expose ports for HTTP and HTTPS
+EXPOSE 80 443
 
 # Run migration on Render
 RUN php artisan migrate --force
