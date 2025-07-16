@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     npm
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_pgsql gd
+RUN docker-phpext-install pdo_pgsql gd
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -37,8 +37,13 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Build frontend assets
+# Clean previous Vite builds and caches
+RUN rm -rf /var/www/html/public/build /var/www/html/bootstrap/cache/*
 RUN npm install && npm run build
+
+# Clear Laravel caches
+RUN php artisan config:cache
+RUN php artisan view:clear
 
 # Laravel config
 ENV APP_ENV=production

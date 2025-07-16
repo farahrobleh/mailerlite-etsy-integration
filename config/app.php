@@ -52,7 +52,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://mailerlite-etsy-integration.onrender.com'),
+    'asset_url' => env('ASSET_URL', 'https://mailerlite-etsy-integration.onrender.com'),
 
     /*
     |--------------------------------------------------------------------------

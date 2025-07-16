@@ -7,7 +7,6 @@ export default defineConfig({
         laravel({
             input: ['resources/js/app.js'],
             refresh: true,
-            // Ensure assets are served from the correct domain
             publicDirectory: 'public',
             buildDirectory: 'build',
         }),
@@ -20,6 +19,10 @@ export default defineConfig({
             },
         }),
     ],
-    // Use relative paths or HTTPS for production
-    base: process.env.NODE_ENV === 'production' ? 'https://mailerlite-etsy-integration.onrender.com' : '/',
+    // Use relative paths to avoid hardcoding HTTP/HTTPS
+    base: '/',
+    // Ensure HTTPS in production
+    server: {
+        https: process.env.NODE_ENV === 'production',
+    },
 });
