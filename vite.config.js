@@ -19,10 +19,5 @@ export default defineConfig({
             },
         }),
     ],
-    // Use relative paths to avoid hardcoding HTTP/HTTPS
-    base: '/',
-    // Ensure HTTPS in production
-    server: {
-        https: process.env.NODE_ENV === 'production',
-    },
+    base: process.env.NODE_ENV === 'production' ? 'https://mailerlite-etsy-integration.onrender.com' : '/',
 });
